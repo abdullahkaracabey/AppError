@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_unknown">Bilinmeyen bir hata oluştu.</string>
+    <string name="error_unknown_from_server">Sunucu kaynaklı bir hata oluştu; lütfen daha sonra tekrar deneyiniz.</string>
+    <string name="error_connection">Internet bağlantısı yok; lütfen bağlantınızı kontrol ediniz.</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_unknown">There is an unknown error.</string>
+    <string name="error_unknown_from_server">A server-based error occurred. Please try again later.</string>
+    <string name="error_connection">You have no internet connection.</string>
+</resources>
