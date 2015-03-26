@@ -1,5 +1,11 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.jfrog.bintray'
+
+ext {
+    PUBLISH_GROUP_ID = 'tr.com.abdullahkaracabey'
+    PUBLISH_ARTIFACT_ID = 'app-error'
+    PUBLISH_VERSION = '1.0.0'
+    // gradlew clean build generateRelease
+}
 
 android {
     compileSdkVersion 21
@@ -9,49 +15,12 @@ android {
         minSdkVersion 14
         targetSdkVersion 21
         versionCode 1
-        versionName "1.0.0"
+        versionName PUBLISH_VERSION
     }
     buildTypes {
 
     }
 
-    bintray {
-        user = 'abdullahkaracabey'
-        key = 'b839ce195c4ea1222aff9edc781f038e8d2a5379'
-
-//        configurations = ['deployables'] //When uploading configuration files
-        // - OR -
-        publications = ['mavenStuff'] //When uploading Maven-based publication files
-        // - AND/OR -
-        filesSpec { //When uploading any arbitrary files ('filesSpec' is a standard Gradle CopySpec)
-            from 'arbitrary-files'
-            into 'standalone_files/level1'
-            rename '(.+)\\.(.+)', '$1-suffix.$2'
-        }
-        dryRun = false //Whether to run this as dry-run, without deploying
-        publish = true //If version should be auto published after an upload
-        pkg {
-            repo = 'AppError'
-//            userOrg = 'myorg' //An optional organization name when the repo belongs to one of the user's orgs
-            name = 'AppError'
-            desc = 'Helper for Errors on Android'
-            websiteUrl = 'https://github.com/abdullahkaracabey/AppError'
-            issueTrackerUrl = 'https://github.com/abdullahkaracabey/AppError/issues'
-            vcsUrl = 'https://github.com/abdullahkaracabey/AppError.git'
-            licenses = ['Apache-2.0']
-            labels = ['Error', 'Toast']
-            publicDownloadNumbers = true
-            attributes= ['a': ['ay1', 'ay2'], 'b': ['bee'], c: 'cee'] //Optional package-level attributes
-            //Optional version descriptor
-//            version {
-//                name = '1.3-Final' //Bintray logical version name
-//                desc = 'optional, version-specific description'
-//                vcsTag = '1.3.0'
-//                attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
-//                //Optional version-level attributes
-//            }
-        }
-
-    }
+    apply from: '../android-release-jar.gradle'
 }
 
